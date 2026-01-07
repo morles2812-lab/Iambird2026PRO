@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 55%; /* Rojo Neón más brillante */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 100% 55%; /* Rojo Neón más brillante */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 84% 20%; /* Borde rojo oscuro */
+    --input: 240 3.7% 15.9%;
+    --ring: 0 100% 55%; /* Rojo Neón más brillante */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.8rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 55%; /* Rojo Neón más brillante */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 100% 55%; /* Rojo Neón más brillante */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 84% 20%; /* Borde rojo oscuro */
+    --input: 240 3.7% 15.9%;
+    --ring: 0 100% 55%; /* Rojo Neón más brillante */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animated-gradient {
+    background: linear-gradient(-45deg, #ff0000, #ff1a1a, #cc0000, #ff4d4d);
+    background-size: 400% 400%;
+    animation: gradient 0.5s ease infinite;
+  }
+
+  .neon-glow {
+    text-shadow:
+      0 0 1px #000, 0 0 2px #000,
+      0 0 10px hsl(var(--primary)),
+      0 0 21px hsl(var(--primary)),
+      0 0 32px hsl(var(--primary));
+  }
+  
+  .button-glow {
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.8));
+  }
+
+  .animated-icon {
+    animation: icon-glow 1.2s ease-in-out infinite alternate;
+  }
+
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes icon-glow {
+    from {
+      filter: drop-shadow(0 0 6px hsl(var(--primary))) drop-shadow(0 0 10px hsl(var(--primary))) drop-shadow(0 0 18px hsl(var(--primary)));
+    }
+    to {
+      filter: drop-shadow(0 0 10px hsl(var(--primary))) drop-shadow(0 0 18px hsl(var(--primary))) drop-shadow(0 0 30px hsl(var(--primary)));
+    }
+  }
+  
+  @keyframes text-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes button-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.8));
+    }
+    50% {
+      transform: scale(1.07);
+      filter: drop-shadow(0 0 16px hsl(var(--primary)));
+    }
+  }
+
+  .animate-text-pulse {
+    animation: text-pulse 1.3s ease-in-out infinite;
+  }
+  
+  .animate-button-pulse {
+    animation: button-pulse 1s ease-in-out infinite;
+  }
+}
